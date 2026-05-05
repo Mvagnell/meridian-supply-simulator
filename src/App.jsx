@@ -528,6 +528,9 @@ export default function App() {
             <p style={{fontSize:10,color:"#94a3b8",lineHeight:1.7,margin:0}}>
               Matthew Agnello is an operations and data analytics leader with more than a decade of experience building, scaling, and optimizing complex supply-chain and operating models across aerospace, automotive, technology, and industrial environments. His work spans procurement, inventory, logistics, production, and enterprise data strategy leveraging analytics to improve performance, resilience, and capital efficiency. Matthew holds an MBA from Cornell University and a B.S. in Supply Chain Management from Syracuse University. He is APICS CPIM certified and a Level II CFA candidate. He brings a distinctive ability to integrate operational execution with analytics-driven strategy to enable sustainable, data-informed growth.
             </p>
+            <div style={{marginTop:20,display:"flex",justifyContent:"center"}}>
+              <img src={LOGO} alt="Alpine Business Analytics" style={{width:160,height:160,objectFit:"cover",borderRadius:16,opacity:0.9}}/>
+            </div>
           </div>
         </div>
 
@@ -559,7 +562,7 @@ export default function App() {
           </div>
 
           {/* Map */}
-          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0,height:520}}>
+          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0,height:mapTab==="geo"?520:undefined}}>
             {mapTab==="network"
               ?<NetworkMap affectedNodes={sim.affectedNodes} capacityLoss={sim.capacityLoss} onNodeClick={setSelectedNode} selectedNode={selectedNode}/>
               :leafletLoaded
