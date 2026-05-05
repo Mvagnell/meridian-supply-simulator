@@ -545,30 +545,6 @@ export default function App() {
             ))}
           </div>
 
-          {/* Mitigation levers — horizontal, pops in when scenario active */}
-          {activeScenario&&(
-            <div style={{background:"#071a2e",borderRadius:10,border:"1px solid #0f2233",padding:"10px 12px"}}>
-              <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.1em",marginBottom:8}}>MITIGATION LEVERS — toggle responses to model tradeoffs</div>
-              <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}}>
-                {MITIGATIONS.map(m=>(
-                  <div key={m.key} onClick={()=>toggleMitigation(m.key)} style={{
-                    borderRadius:8,padding:"8px 10px",cursor:"pointer",
-                    border:`1px solid ${mitigations[m.key]?"#22c55e":"#132238"}`,
-                    background:mitigations[m.key]?"#052e16":"#0a1e35",
-                    transition:"all 0.2s",
-                  }}>
-                    <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:4}}>
-                      <span style={{fontSize:14}}>{m.icon}</span>
-                      <div style={{width:12,height:12,borderRadius:"50%",border:`2px solid ${mitigations[m.key]?"#22c55e":"#1e3a5f"}`,background:mitigations[m.key]?"#22c55e":"transparent",flexShrink:0,marginLeft:"auto"}}/>
-                    </div>
-                    <div style={{fontSize:11,fontWeight:600,color:mitigations[m.key]?"#86efac":"#cbd5e1",lineHeight:1.3,marginBottom:3}}>{m.label}</div>
-                    <div style={{fontSize:9,color:"#64748b"}}>{m.detail}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Map tabs */}
           <div style={{display:"flex",gap:4,alignItems:"center"}}>
             {["network","geo"].map(t=>(
@@ -583,7 +559,7 @@ export default function App() {
           </div>
 
           {/* Map */}
-          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0}}>
+          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0,height:520}}>
             {mapTab==="network"
               ?<NetworkMap affectedNodes={sim.affectedNodes} capacityLoss={sim.capacityLoss} onNodeClick={setSelectedNode} selectedNode={selectedNode}/>
               :leafletLoaded
@@ -678,6 +654,37 @@ export default function App() {
                 <Bar dataKey="actual"   name="actual"   fill="#ef4444" radius={[2,2,0,0]}/>
               </BarChart>
             </ResponsiveContainer>
+          </div>
+
+          {/* Mitigation levers — horizontal grid, pops in when scenario active */}
+          <div style={{padding:"12px 14px",background:"#071a2e",flex:1}}>
+            <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.1em",marginBottom:4}}>MITIGATION LEVERS</div>
+            {activeScenario?(
+              <>
+                <div style={{fontSize:9,color:"#64748b",marginBottom:8}}>Toggle responses to model tradeoffs.</div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+                  {MITIGATIONS.map(m=>(
+                    <div key={m.key} onClick={()=>toggleMitigation(m.key)} style={{
+                      borderRadius:8,padding:"8px 10px",cursor:"pointer",
+                      border:`1px solid ${mitigations[m.key]?"#22c55e":"#132238"}`,
+                      background:mitigations[m.key]?"#052e16":"#0a1e35",
+                      transition:"all 0.2s",
+                    }}>
+                      <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:4}}>
+                        <span style={{fontSize:13}}>{m.icon}</span>
+                        <div style={{width:11,height:11,borderRadius:"50%",border:`2px solid ${mitigations[m.key]?"#22c55e":"#1e3a5f"}`,background:mitigations[m.key]?"#22c55e":"transparent",flexShrink:0,marginLeft:"auto"}}/>
+                      </div>
+                      <div style={{fontSize:10,fontWeight:600,color:mitigations[m.key]?"#86efac":"#cbd5e1",lineHeight:1.3,marginBottom:2}}>{m.label}</div>
+                      <div style={{fontSize:9,color:"#64748b"}}>{m.detail}</div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ):(
+              <div style={{fontSize:11,color:"#334155",textAlign:"center",padding:"12px 0",lineHeight:1.6}}>
+                Select a scenario to unlock mitigation levers.
+              </div>
+            )}
           </div>
 
         </div>
