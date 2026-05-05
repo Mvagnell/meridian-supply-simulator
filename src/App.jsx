@@ -29,68 +29,73 @@ const NODE_INFO = {
 };
 
 const NODES = {
-  steel_us:    { id: "steel_us",    label: "US Steel Co",        sub: "Gary, IN",           tier: 2, type: "supplier", x: 60,  y: 80  },
-  castings_de: { id: "castings_de", label: "Kessler Castings",   sub: "Stuttgart, DE",      tier: 2, type: "supplier", x: 60,  y: 180 },
-  motors_mx:   { id: "motors_mx",   label: "Motores del Norte",  sub: "Monterrey, MX",      tier: 2, type: "supplier", x: 60,  y: 280 },
-  elec_tw:     { id: "elec_tw",     label: "Pacific Controls",   sub: "Taipei, TW",         tier: 2, type: "supplier", x: 60,  y: 380 },
-  hydro_it:    { id: "hydro_it",    label: "Lombardi Hydraulics", sub: "Milan, IT",          tier: 2, type: "supplier", x: 60,  y: 480 },
-  comp_a:      { id: "comp_a",      label: "Alloy Fabricators",  sub: "Cleveland, OH",      tier: 1, type: "supplier", x: 280, y: 130 },
-  comp_b:      { id: "comp_b",      label: "Drivetech Systems",  sub: "Detroit, MI",        tier: 1, type: "supplier", x: 280, y: 250 },
-  comp_c:      { id: "comp_c",      label: "Apex Electronics",   sub: "Austin, TX",         tier: 1, type: "supplier", x: 280, y: 370 },
-  comp_d:      { id: "comp_d",      label: "FluidPower GmbH",    sub: "Munich, DE",         tier: 1, type: "supplier", x: 280, y: 480 },
-  plant_oh:    { id: "plant_oh",    label: "Meridian Ohio",      sub: "Columbus, OH",       tier: 0, type: "plant",    x: 500, y: 160 },
-  plant_de:    { id: "plant_de",    label: "Meridian Europe",    sub: "Düsseldorf, DE",     tier: 0, type: "plant",    x: 500, y: 310 },
-  plant_mx:    { id: "plant_mx",    label: "Meridian Mexico",    sub: "San Luis Potosí",    tier: 0, type: "plant",    x: 500, y: 440 },
-  dc_east:     { id: "dc_east",     label: "DC East",            sub: "Atlanta, GA",        tier: -1, type: "dc",     x: 720, y: 110 },
-  dc_west:     { id: "dc_west",     label: "DC West",            sub: "Phoenix, AZ",        tier: -1, type: "dc",     x: 720, y: 240 },
-  dc_eu:       { id: "dc_eu",       label: "DC Europe",          sub: "Rotterdam, NL",      tier: -1, type: "dc",     x: 720, y: 360 },
-  dc_latam:    { id: "dc_latam",    label: "DC LATAM",           sub: "Bogotá, CO",         tier: -1, type: "dc",     x: 720, y: 470 },
+  steel_us:    { id: "steel_us",    label: "US Steel Co",         sub: "Gary, IN",           tier: 2,  type: "supplier", x: 60,  y: 80  },
+  castings_de: { id: "castings_de", label: "Kessler Castings",    sub: "Stuttgart, DE",      tier: 2,  type: "supplier", x: 60,  y: 180 },
+  motors_mx:   { id: "motors_mx",   label: "Motores del Norte",   sub: "Monterrey, MX",      tier: 2,  type: "supplier", x: 60,  y: 280 },
+  elec_tw:     { id: "elec_tw",     label: "Pacific Controls",    sub: "Taipei, TW",         tier: 2,  type: "supplier", x: 60,  y: 380 },
+  hydro_it:    { id: "hydro_it",    label: "Lombardi Hydraulics", sub: "Milan, IT",           tier: 2,  type: "supplier", x: 60,  y: 480 },
+  comp_a:      { id: "comp_a",      label: "Alloy Fabricators",   sub: "Cleveland, OH",      tier: 1,  type: "supplier", x: 280, y: 130 },
+  comp_b:      { id: "comp_b",      label: "Drivetech Systems",   sub: "Detroit, MI",        tier: 1,  type: "supplier", x: 280, y: 250 },
+  comp_c:      { id: "comp_c",      label: "Apex Electronics",    sub: "Austin, TX",         tier: 1,  type: "supplier", x: 280, y: 370 },
+  comp_d:      { id: "comp_d",      label: "FluidPower GmbH",     sub: "Munich, DE",         tier: 1,  type: "supplier", x: 280, y: 480 },
+  plant_oh:    { id: "plant_oh",    label: "Meridian Ohio",       sub: "Columbus, OH",       tier: 0,  type: "plant",    x: 500, y: 160 },
+  plant_de:    { id: "plant_de",    label: "Meridian Europe",     sub: "Düsseldorf, DE",     tier: 0,  type: "plant",    x: 500, y: 310 },
+  plant_mx:    { id: "plant_mx",    label: "Meridian Mexico",     sub: "San Luis Potosí",    tier: 0,  type: "plant",    x: 500, y: 440 },
+  dc_east:     { id: "dc_east",     label: "DC East",             sub: "Atlanta, GA",        tier: -1, type: "dc",       x: 720, y: 110 },
+  dc_west:     { id: "dc_west",     label: "DC West",             sub: "Phoenix, AZ",        tier: -1, type: "dc",       x: 720, y: 240 },
+  dc_eu:       { id: "dc_eu",       label: "DC Europe",           sub: "Rotterdam, NL",      tier: -1, type: "dc",       x: 720, y: 360 },
+  dc_latam:    { id: "dc_latam",    label: "DC LATAM",            sub: "Bogotá, CO",         tier: -1, type: "dc",       x: 720, y: 470 },
 };
 
 const NODE_W = 160, NODE_H = 44;
 
 const EDGES = [
-  { from: "steel_us",    to: "comp_a" },
-  { from: "steel_us",    to: "comp_b" },
-  { from: "castings_de", to: "comp_a" },
-  { from: "castings_de", to: "comp_d" },
-  { from: "motors_mx",   to: "comp_b" },
-  { from: "motors_mx",   to: "comp_c" },
-  { from: "elec_tw",     to: "comp_c" },
-  { from: "hydro_it",    to: "comp_d" },
-  { from: "comp_a",      to: "plant_oh" },
-  { from: "comp_a",      to: "plant_de" },
-  { from: "comp_b",      to: "plant_oh" },
-  { from: "comp_b",      to: "plant_mx" },
-  { from: "comp_c",      to: "plant_oh" },
-  { from: "comp_c",      to: "plant_mx" },
-  { from: "comp_d",      to: "plant_de" },
-  { from: "comp_d",      to: "plant_mx" },
-  { from: "plant_oh",    to: "dc_east" },
-  { from: "plant_oh",    to: "dc_west" },
-  { from: "plant_de",    to: "dc_eu" },
-  { from: "plant_de",    to: "dc_east" },
-  { from: "plant_mx",    to: "dc_west" },
-  { from: "plant_mx",    to: "dc_latam" },
+  { from: "steel_us",    to: "comp_a" }, { from: "steel_us",    to: "comp_b" },
+  { from: "castings_de", to: "comp_a" }, { from: "castings_de", to: "comp_d" },
+  { from: "motors_mx",   to: "comp_b" }, { from: "motors_mx",   to: "comp_c" },
+  { from: "elec_tw",     to: "comp_c" }, { from: "hydro_it",    to: "comp_d" },
+  { from: "comp_a", to: "plant_oh" }, { from: "comp_a", to: "plant_de" },
+  { from: "comp_b", to: "plant_oh" }, { from: "comp_b", to: "plant_mx" },
+  { from: "comp_c", to: "plant_oh" }, { from: "comp_c", to: "plant_mx" },
+  { from: "comp_d", to: "plant_de" }, { from: "comp_d", to: "plant_mx" },
+  { from: "plant_oh", to: "dc_east" }, { from: "plant_oh", to: "dc_west" },
+  { from: "plant_de", to: "dc_eu"   }, { from: "plant_de", to: "dc_east" },
+  { from: "plant_mx", to: "dc_west" }, { from: "plant_mx", to: "dc_latam" },
 ];
 
 const GEO_COORDS = {
-  steel_us:    [41.60, -87.34],
-  castings_de: [48.78,   9.18],
-  motors_mx:   [25.67, -100.31],
-  elec_tw:     [25.03, 121.56],
-  hydro_it:    [45.46,   9.19],
-  comp_a:      [41.50, -81.69],
-  comp_b:      [42.33, -83.05],
-  comp_c:      [30.27, -97.74],
-  comp_d:      [48.14,  11.58],
-  plant_oh:    [39.96, -82.99],
-  plant_de:    [51.22,   6.78],
-  plant_mx:    [22.15, -100.98],
-  dc_east:     [33.75, -84.39],
-  dc_west:     [33.45, -112.07],
-  dc_eu:       [51.92,   4.48],
-  dc_latam:    [ 4.71, -74.07],
+  steel_us:    [41.60, -87.34], castings_de: [48.78,   9.18],
+  motors_mx:   [25.67,-100.31], elec_tw:     [25.03, 121.56],
+  hydro_it:    [45.46,   9.19], comp_a:      [41.50, -81.69],
+  comp_b:      [42.33, -83.05], comp_c:      [30.27, -97.74],
+  comp_d:      [48.14,  11.58], plant_oh:    [39.96, -82.99],
+  plant_de:    [51.22,   6.78], plant_mx:    [22.15,-100.98],
+  dc_east:     [33.75, -84.39], dc_west:     [33.45,-112.07],
+  dc_eu:       [51.92,   4.48], dc_latam:    [ 4.71, -74.07],
+};
+
+// SVG icon paths for geo map markers
+const GEO_ICONS = {
+  supplier: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <circle cx="14" cy="14" r="13" fill="COLOR" stroke="#050d1a" stroke-width="2"/>
+    <path d="M7 19v-7l7-4 7 4v7H7z" fill="none" stroke="ICON" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M11 19v-4h6v4" fill="none" stroke="ICON" stroke-width="1.5"/>
+    <line x1="14" y1="8" x2="14" y2="12" stroke="ICON" stroke-width="1.5"/>
+  </svg>`,
+  plant: `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <circle cx="15" cy="15" r="14" fill="COLOR" stroke="#050d1a" stroke-width="2"/>
+    <rect x="8" y="14" width="14" height="8" fill="none" stroke="ICON" stroke-width="1.5"/>
+    <path d="M8 14 L8 10 L11 12 L11 10 L14 12 L14 10 L17 12 L17 10 L22 10 L22 14" fill="none" stroke="ICON" stroke-width="1.5" stroke-linejoin="round"/>
+    <rect x="12" y="17" width="3" height="5" fill="none" stroke="ICON" stroke-width="1.2"/>
+    <rect x="17" y="16" width="3" height="3" fill="none" stroke="ICON" stroke-width="1.2"/>
+  </svg>`,
+  dc: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <circle cx="14" cy="14" r="13" fill="COLOR" stroke="#050d1a" stroke-width="2"/>
+    <path d="M6 12 L14 8 L22 12 L22 21 L6 21 Z" fill="none" stroke="ICON" stroke-width="1.5" stroke-linejoin="round"/>
+    <line x1="6" y1="12" x2="22" y2="12" stroke="ICON" stroke-width="1.2"/>
+    <rect x="11" y="15" width="6" height="6" fill="none" stroke="ICON" stroke-width="1.2"/>
+    <line x1="14" y1="8" x2="14" y2="12" stroke="ICON" stroke-width="1.2"/>
+  </svg>`,
 };
 
 const SCENARIOS = {
@@ -133,9 +138,9 @@ const SCENARIOS = {
     affectedNodes: ["castings_de","hydro_it","comp_d"],
     cascades: { mild: [], moderate: ["plant_de"], severe: ["plant_de","dc_eu","dc_east"] },
     impacts: {
-      mild:     { leadTimeDelta: 2,  costImpact: 3.4, fillRate: 91, resilienceScore: 70, capacityLoss: 5  },
-      moderate: { leadTimeDelta: 7,  costImpact: 7.1, fillRate: 83, resilienceScore: 54, capacityLoss: 14 },
-      severe:   { leadTimeDelta: 16, costImpact: 12.8,fillRate: 71, resilienceScore: 36, capacityLoss: 24 },
+      mild:     { leadTimeDelta: 2,  costImpact: 3.4,  fillRate: 91, resilienceScore: 70, capacityLoss: 5  },
+      moderate: { leadTimeDelta: 7,  costImpact: 7.1,  fillRate: 83, resilienceScore: 54, capacityLoss: 14 },
+      severe:   { leadTimeDelta: 16, costImpact: 12.8, fillRate: 71, resilienceScore: 36, capacityLoss: 24 },
     },
   },
   energy_disruption: {
@@ -166,7 +171,7 @@ function computeSimulation(scenario, severity, mitigations) {
     costData: Array.from({length:12},(_,i)=>({week:`W${i+1}`,baseline:2.4,actual:2.4})),
   };
   const def = SCENARIOS[scenario];
-  let { leadTimeDelta, costImpact, fillRate, resilienceScore, capacityLoss } = { ...def.impacts[severity] };
+  let { leadTimeDelta, costImpact, fillRate, resilienceScore, capacityLoss } = {...def.impacts[severity]};
   if (mitigations.backup_supplier) { leadTimeDelta=Math.round(leadTimeDelta*0.65); costImpact=+(costImpact*1.18).toFixed(1); fillRate=Math.min(98,fillRate+9); resilienceScore=Math.min(95,resilienceScore+14); capacityLoss=Math.max(0,capacityLoss-12); }
   if (mitigations.air_freight)     { leadTimeDelta=Math.max(2,Math.round(leadTimeDelta*0.5)); costImpact=+(costImpact*1.35).toFixed(1); fillRate=Math.min(98,fillRate+7); resilienceScore=Math.min(95,resilienceScore+8); }
   if (mitigations.safety_stock)    { fillRate=Math.min(98,fillRate+11); resilienceScore=Math.min(95,resilienceScore+10); capacityLoss=Math.max(0,capacityLoss-6); }
@@ -174,233 +179,226 @@ function computeSimulation(scenario, severity, mitigations) {
   const stockDraw = mitigations.safety_stock ? 0.55 : 0.85;
   const recover = mitigations.backup_supplier || mitigations.air_freight;
   const inventoryData = Array.from({length:12},(_,i)=>{
-    const baseDecay = Math.max(20, 100 - i*(capacityLoss/10)*stockDraw);
-    const recovered = recover && i>=4 ? Math.min(100, baseDecay+(i-4)*5) : baseDecay;
-    return { week:`W${i+1}`, safety:30, onHand:Math.round(Math.min(100,recovered)) };
+    const baseDecay = Math.max(20,100-i*(capacityLoss/10)*stockDraw);
+    const recovered = recover&&i>=4?Math.min(100,baseDecay+(i-4)*5):baseDecay;
+    return {week:`W${i+1}`,safety:30,onHand:Math.round(Math.min(100,recovered))};
   });
   const costData = Array.from({length:12},(_,i)=>{
-    const spike = i<3 ? costImpact : costImpact*(recover?Math.max(0.4,1-i*0.08):1);
-    return { week:`W${i+1}`, baseline:2.4, actual:+(2.4+spike*(i<1?0.3:i<3?0.7:1)).toFixed(2) };
+    const spike = i<3?costImpact:costImpact*(recover?Math.max(0.4,1-i*0.08):1);
+    return {week:`W${i+1}`,baseline:2.4,actual:+(2.4+spike*(i<1?0.3:i<3?0.7:1)).toFixed(2)};
   });
-  const allAffected = [...def.affectedNodes, ...(def.cascades[severity]||[])];
-  return { leadTimeDelta, costImpact, fillRate, resilienceScore, capacityLoss, affectedNodes: allAffected, inventoryData, costData };
-}
-
-function nodeInventoryPct(nodeId, affectedNodes, capacityLoss) {
-  if (!affectedNodes.includes(nodeId)) return 100;
-  const base = 100 - capacityLoss;
-  return Math.max(8, base + (Math.random() * 6 - 3));
+  return {
+    leadTimeDelta, costImpact, fillRate, resilienceScore, capacityLoss,
+    affectedNodes: [...def.affectedNodes,...(def.cascades[severity]||[])],
+    inventoryData, costData,
+  };
 }
 
 function nodeColor(nodeId, affectedNodes, type) {
-  if (affectedNodes.includes(nodeId)) return { fill:"#7f1d1d", stroke:"#ef4444", text:"#fca5a5" };
+  if (affectedNodes.includes(nodeId)) return {fill:"#7f1d1d",stroke:"#ef4444",text:"#fca5a5"};
   return {
-    supplier: { fill:"#0f2744", stroke:"#3b82f6", text:"#93c5fd" },
-    plant:    { fill:"#052e16", stroke:"#22c55e", text:"#86efac" },
-    dc:       { fill:"#422006", stroke:"#f59e0b", text:"#fcd34d" },
-  }[type] || { fill:"#1e293b", stroke:"#475569", text:"#94a3b8" };
+    supplier:{fill:"#0f2744",stroke:"#3b82f6",text:"#bfdbfe"},
+    plant:   {fill:"#052e16",stroke:"#22c55e",text:"#bbf7d0"},
+    dc:      {fill:"#422006",stroke:"#f59e0b",text:"#fde68a"},
+  }[type]||{fill:"#1e293b",stroke:"#475569",text:"#cbd5e1"};
 }
 
 // ─── RESILIENCE GAUGE ─────────────────────────────────────────────────────────
 function ResilienceGauge({ score }) {
   const color = score>=70?"#22c55e":score>=45?"#f59e0b":"#ef4444";
-  const pct = score/100;
-  const r=52, cx=70, cy=70;
-  const circ = 2*Math.PI*r;
-  const dashArr = `${pct*270/360*circ} ${circ}`;
-  const dashOff = `${-135/360*circ}`;
+  const r=42, cx=56, cy=56;
+  const circ=2*Math.PI*r;
+  const dashArr=`${(score/100)*270/360*circ} ${circ}`;
+  const dashOff=`${-135/360*circ}`;
   return (
-    <svg width="140" height="100" viewBox="0 0 140 100">
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#1e293b" strokeWidth="10"
-        strokeDasharray={`${270/360*circ} ${circ}`} strokeDashoffset={dashOff} strokeLinecap="round"
-        transform={`rotate(-90 ${cx} ${cy})`}/>
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke={color} strokeWidth="10"
-        strokeDasharray={dashArr} strokeDashoffset={dashOff} strokeLinecap="round"
-        transform={`rotate(-90 ${cx} ${cy})`} style={{transition:"stroke-dasharray 0.6s,stroke 0.4s"}}/>
-      <text x={cx} y={cy+6}  textAnchor="middle" fontSize="22" fontWeight="700" fill={color} style={{transition:"fill 0.4s"}}>{score}</text>
-      <text x={cx} y={cy+22} textAnchor="middle" fontSize="10" fill="#475569">resilience</text>
+    <svg width="112" height="88" viewBox="0 0 112 88">
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#1e293b" strokeWidth="8"
+        strokeDasharray={`${270/360*circ} ${circ}`} strokeDashoffset={dashOff}
+        strokeLinecap="round" transform={`rotate(-90 ${cx} ${cy})`}/>
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke={color} strokeWidth="8"
+        strokeDasharray={dashArr} strokeDashoffset={dashOff}
+        strokeLinecap="round" transform={`rotate(-90 ${cx} ${cy})`}
+        style={{transition:"stroke-dasharray 0.6s,stroke 0.4s"}}/>
+      <text x={cx} y={cx+5}  textAnchor="middle" fontSize="20" fontWeight="700" fill={color} style={{transition:"fill 0.4s"}}>{score}</text>
+      <text x={cx} y={cx+20} textAnchor="middle" fontSize="9"  fill="#94a3b8">/ 100</text>
     </svg>
   );
 }
 
 // ─── NETWORK MAP ──────────────────────────────────────────────────────────────
-const SVG_W = 920, SVG_H = 600;
+const SVG_W=920, SVG_H=660;
 
 function NetworkMap({ affectedNodes, capacityLoss, onNodeClick, selectedNode }) {
   const invPct = (id) => {
     if (!affectedNodes.includes(id)) return 100;
-    return Math.max(8, (100 - capacityLoss) * (0.85 + Math.sin(id.length)*0.15));
+    return Math.max(8,(100-capacityLoss)*(0.85+Math.sin(id.length)*0.15));
   };
-
   return (
     <svg viewBox={`0 0 ${SVG_W} ${SVG_H}`} width="100%"
-      style={{display:"block", borderRadius:12, background:"#0a1628"}}>
-
-      {/* Column headers */}
-      {[{x:60+NODE_W/2,label:"TIER-2 SUPPLIERS"},{x:280+NODE_W/2,label:"TIER-1 SUPPLIERS"},{x:500+NODE_W/2,label:"PLANTS"},{x:720+NODE_W/2,label:"DISTRIBUTION"}].map(col=>(
-        <text key={col.x} x={col.x} y={30} textAnchor="middle" fontSize="9" fill="#334155" fontWeight="700" letterSpacing="0.08em">{col.label}</text>
-      ))}
-
-      {/* Edges — from right-center of source to left-center of dest, with arrowhead */}
+      style={{display:"block",borderRadius:12,background:"#0a1628"}}>
       <defs>
-        <marker id="arr-normal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
           <path d="M1 1L9 5L1 9" fill="none" stroke="#334155" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </marker>
-        <marker id="arr-hot" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <marker id="arr-h" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
           <path d="M1 1L9 5L1 9" fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </marker>
       </defs>
-
+      {[{x:60+NODE_W/2,l:"TIER-2 SUPPLIERS"},{x:280+NODE_W/2,l:"TIER-1 SUPPLIERS"},{x:500+NODE_W/2,l:"PLANTS"},{x:720+NODE_W/2,l:"DISTRIBUTION"}].map(col=>(
+        <text key={col.x} x={col.x} y={30} textAnchor="middle" fontSize="9" fill="#475569" fontWeight="700" letterSpacing="0.08em">{col.l}</text>
+      ))}
       {EDGES.map((e,i)=>{
-        const from=NODES[e.from], to=NODES[e.to];
+        const from=NODES[e.from],to=NODES[e.to];
         const x1=from.x+NODE_W, y1=from.y+NODE_H/2;
         const x2=to.x,          y2=to.y+NODE_H/2;
-        const hot = affectedNodes.includes(e.from)||affectedNodes.includes(e.to);
-        const mx = (x1+x2)/2;
-        return (
-          <path key={i}
-            d={`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`}
-            fill="none" stroke={hot?"#ef4444":"#1e3a5f"}
-            strokeWidth={hot?1.8:1}
-            strokeOpacity={hot?0.9:0.5}
-            markerEnd={hot?"url(#arr-hot)":"url(#arr-normal)"}
-            style={{transition:"stroke 0.4s"}}/>
-        );
+        const hot=affectedNodes.includes(e.from)||affectedNodes.includes(e.to);
+        const mx=(x1+x2)/2;
+        return <path key={i} d={`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`}
+          fill="none" stroke={hot?"#ef4444":"#1e3a5f"} strokeWidth={hot?1.8:1}
+          strokeOpacity={hot?0.9:0.55} markerEnd={hot?"url(#arr-h)":"url(#arr-n)"}
+          style={{transition:"stroke 0.4s"}}/>;
       })}
-
-      {/* Nodes + inventory bars */}
       {Object.values(NODES).map(node=>{
-        const c=nodeColor(node.id, affectedNodes, node.type);
+        const c=nodeColor(node.id,affectedNodes,node.type);
         const pct=invPct(node.id);
         const barColor=pct>70?"#22c55e":pct>40?"#f59e0b":"#ef4444";
-        const isSelected=selectedNode?.id===node.id;
+        const isSel=selectedNode?.id===node.id;
         return (
           <g key={node.id} style={{cursor:"pointer"}} onClick={()=>onNodeClick(node)}>
-            {/* Node box */}
             <rect x={node.x} y={node.y} width={NODE_W} height={NODE_H} rx={7}
-              fill={c.fill} stroke={isSelected?"#fff":c.stroke}
-              strokeWidth={isSelected?2:1}
+              fill={c.fill} stroke={isSel?"#fff":c.stroke} strokeWidth={isSel?2:1}
               style={{transition:"fill 0.35s,stroke 0.35s"}}/>
-            <text x={node.x+NODE_W/2} y={node.y+14} textAnchor="middle" fontSize="11" fontWeight="700" fill={c.text}>{node.label}</text>
-            <text x={node.x+NODE_W/2} y={node.y+29} textAnchor="middle" fontSize="9"  fill={c.text} opacity={0.7}>{node.sub}</text>
-            {/* Inventory bar */}
+            <text x={node.x+NODE_W/2} y={node.y+15} textAnchor="middle" fontSize="11" fontWeight="700" fill={c.text}>{node.label}</text>
+            <text x={node.x+NODE_W/2} y={node.y+30} textAnchor="middle" fontSize="9"  fill={c.text} opacity={0.8}>{node.sub}</text>
             <rect x={node.x} y={node.y+NODE_H+3} width={NODE_W} height={5} rx={2} fill="#1e293b"/>
             <rect x={node.x} y={node.y+NODE_H+3} width={NODE_W*pct/100} height={5} rx={2} fill={barColor}
               style={{transition:"width 0.5s,fill 0.4s"}}/>
           </g>
         );
       })}
-
-      {/* Legend */}
       {[{c:"#0f2744",s:"#3b82f6",l:"Supplier"},{c:"#052e16",s:"#22c55e",l:"Plant"},{c:"#422006",s:"#f59e0b",l:"DC"},{c:"#7f1d1d",s:"#ef4444",l:"Disrupted"}].map((item,i)=>(
         <g key={i} transform={`translate(${30+i*115},572)`}>
           <rect width="12" height="12" rx="3" fill={item.c} stroke={item.s} strokeWidth="1"/>
-          <text x="18" y="10" fontSize="10" fill="#475569">{item.l}</text>
+          <text x="18" y="10" fontSize="10" fill="#94a3b8">{item.l}</text>
         </g>
       ))}
-      <text x={SVG_W-20} y={590} textAnchor="end" fontSize="9" fill="#1e3a5f">Bar below each node = inventory level</text>
+      <text x={SVG_W-16} y={590} textAnchor="end" fontSize="9" fill="#334155">Bar = inventory level</text>
     </svg>
   );
 }
 
 // ─── GEO MAP ─────────────────────────────────────────────────────────────────
-function GeoMap({ affectedNodes, onNodeClick, selectedNode }) {
-  const mapRef = useRef(null);
-  const leafletRef = useRef(null);
+function makeIcon(type, disrupted) {
+  const colors = {
+    supplier: { fill: disrupted?"#7f1d1d":"#1e3a8a", icon: disrupted?"#fca5a5":"#bfdbfe" },
+    plant:    { fill: disrupted?"#7f1d1d":"#14532d", icon: disrupted?"#fca5a5":"#bbf7d0" },
+    dc:       { fill: disrupted?"#7f1d1d":"#451a03", icon: disrupted?"#fca5a5":"#fde68a" },
+  };
+  const c = colors[type]||colors.supplier;
+  return GEO_ICONS[type]
+    .replace(/COLOR/g, c.fill)
+    .replace(/ICON/g,  c.icon);
+}
+
+function GeoMap({ affectedNodes, onNodeClick }) {
+  const mapRef   = useRef(null);
+  const leafRef  = useRef(null);
   const markersRef = useRef({});
-  const linesRef = useRef([]);
+  const linesRef   = useRef([]);
 
-  useEffect(() => {
-    if (leafletRef.current) return;
-    const L = window.L;
-    if (!L) return;
-
-    const map = L.map(mapRef.current, {
-      center: [30, 10], zoom: 2,
-      zoomControl: true, scrollWheelZoom: true,
-      attributionControl: true,
-    });
-
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: "© OpenStreetMap © CARTO",
-      subdomains: "abcd", maxZoom: 19,
+  useEffect(()=>{
+    if (leafRef.current) return;
+    const L = window.L; if (!L) return;
+    const map = L.map(mapRef.current,{center:[30,10],zoom:2,zoomControl:true,scrollWheelZoom:true});
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{
+      attribution:"© OpenStreetMap © CARTO",subdomains:"abcd",maxZoom:19,
     }).addTo(map);
+    leafRef.current = map;
 
-    leafletRef.current = map;
-
-    // Draw edges
-    EDGES.forEach(e => {
-      const from = GEO_COORDS[e.from], to = GEO_COORDS[e.to];
-      if (!from || !to) return;
-      const line = L.polyline([from, to], { color:"#1e3a5f", weight:1.5, opacity:0.6 });
-      line.addTo(map);
-      line._edgeFrom = e.from; line._edgeTo = e.to;
-      linesRef.current.push(line);
+    EDGES.forEach(e=>{
+      const from=GEO_COORDS[e.from],to=GEO_COORDS[e.to];
+      if(!from||!to) return;
+      const line=L.polyline([from,to],{color:"#1e3a5f",weight:1.5,opacity:0.55});
+      line.addTo(map); line._ef=e.from; line._et=e.to; linesRef.current.push(line);
     });
 
-    // Draw markers
-    Object.values(NODES).forEach(node => {
-      const coords = GEO_COORDS[node.id];
-      if (!coords) return;
-      const color = node.type==="plant"?"#22c55e":node.type==="dc"?"#f59e0b":"#3b82f6";
-      const marker = L.circleMarker(coords, {
-        radius: node.type==="plant"?10:node.type==="dc"?9:7,
-        fillColor: color, color: "#0a1628",
-        weight: 2, fillOpacity: 0.9,
-      });
-      marker.bindTooltip(`<b>${node.label}</b><br/>${node.sub}`, {
-        direction:"top", className:"meridian-tooltip"
-      });
-      marker.on("click", () => onNodeClick(node));
+    Object.values(NODES).forEach(node=>{
+      const coords=GEO_COORDS[node.id]; if(!coords) return;
+      const svgStr=makeIcon(node.type,false);
+      const icon=L.divIcon({html:svgStr,className:"",iconSize:[node.type==="plant"?30:28,node.type==="plant"?30:28],iconAnchor:[node.type==="plant"?15:14,node.type==="plant"?15:14]});
+      const marker=L.marker(coords,{icon});
+      marker.bindTooltip(`<b>${node.label}</b><br/><span style="color:#94a3b8">${node.sub}</span>`,
+        {direction:"top",className:"m-tip"});
+      marker.on("click",()=>onNodeClick(node));
       marker.addTo(map);
-      markersRef.current[node.id] = { marker, baseColor: color };
+      markersRef.current[node.id]={marker,type:node.type};
     });
 
-    return () => { map.remove(); leafletRef.current = null; };
-  }, []);
+    return ()=>{map.remove();leafRef.current=null;};
+  },[]);
 
-  // Update colors when affectedNodes changes
-  useEffect(() => {
-    const L = window.L;
-    if (!L || !leafletRef.current) return;
-
-    Object.entries(markersRef.current).forEach(([id, { marker, baseColor }]) => {
-      const isAff = affectedNodes.includes(id);
-      marker.setStyle({
-        fillColor: isAff ? "#ef4444" : baseColor,
-        color: isAff ? "#7f1d1d" : "#0a1628",
-        radius: isAff ? 12 : (NODES[id]?.type==="plant"?10:NODES[id]?.type==="dc"?9:7),
-      });
+  useEffect(()=>{
+    const L=window.L; if(!L||!leafRef.current) return;
+    Object.entries(markersRef.current).forEach(([id,{marker,type}])=>{
+      const disrupted=affectedNodes.includes(id);
+      const svgStr=makeIcon(type,disrupted);
+      const sz=type==="plant"?30:28;
+      const icon=L.divIcon({html:svgStr,className:"",iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]});
+      marker.setIcon(icon);
     });
-
-    linesRef.current.forEach(line => {
-      const hot = affectedNodes.includes(line._edgeFrom)||affectedNodes.includes(line._edgeTo);
-      line.setStyle({ color: hot?"#ef4444":"#1e3a5f", weight: hot?2.5:1.5, opacity: hot?0.85:0.45 });
+    linesRef.current.forEach(line=>{
+      const hot=affectedNodes.includes(line._ef)||affectedNodes.includes(line._et);
+      line.setStyle({color:hot?"#ef4444":"#1e3a5f",weight:hot?2.5:1.5,opacity:hot?0.85:0.45});
     });
-  }, [affectedNodes]);
+  },[affectedNodes]);
 
   return (
     <div style={{position:"relative",borderRadius:12,overflow:"hidden",height:"100%"}}>
       <div ref={mapRef} style={{width:"100%",height:"100%"}}/>
-      <style>{`.meridian-tooltip{background:#1e293b;color:#f1f5f9;border:1px solid #334155;font-size:12px;padding:4px 8px;border-radius:6px;}`}</style>
+      {/* Legend overlay */}
+      <div style={{position:"absolute",bottom:24,left:12,zIndex:1000,background:"rgba(10,22,40,0.88)",border:"1px solid #1e293b",borderRadius:8,padding:"8px 12px",backdropFilter:"blur(4px)"}}>
+        <div style={{fontSize:9,color:"#64748b",fontWeight:700,letterSpacing:"0.08em",marginBottom:6}}>NODE TYPE</div>
+        {[
+          {type:"supplier",color:"#3b82f6",label:"Supplier"},
+          {type:"plant",   color:"#22c55e",label:"Plant"},
+          {type:"dc",      color:"#f59e0b",label:"Distribution Center"},
+          {type:"disrupted",color:"#ef4444",label:"Disrupted"},
+        ].map(item=>(
+          <div key={item.type} style={{display:"flex",alignItems:"center",gap:7,marginBottom:4}}>
+            <div style={{width:12,height:12,borderRadius:3,background:item.color,opacity:0.85,flexShrink:0}}/>
+            <span style={{fontSize:10,color:"#cbd5e1"}}>{item.label}</span>
+          </div>
+        ))}
+        <div style={{borderTop:"1px solid #1e293b",marginTop:6,paddingTop:6}}>
+          <div style={{fontSize:9,color:"#64748b",fontWeight:700,letterSpacing:"0.08em",marginBottom:5}}>ICON KEY</div>
+          {[
+            {label:"Factory = Supplier"},
+            {label:"Plant = Manufacturing"},
+            {label:"House = Distribution"},
+          ].map(item=>(
+            <div key={item.label} style={{fontSize:10,color:"#94a3b8",marginBottom:2}}>{item.label}</div>
+          ))}
+        </div>
+      </div>
+      <style>{`.m-tip{background:#1e293b;color:#f1f5f9;border:1px solid #334155;font-size:12px;padding:5px 9px;border-radius:6px;}.m-tip::before{display:none}`}</style>
     </div>
   );
 }
 
 // ─── CUSTOM TOOLTIP ───────────────────────────────────────────────────────────
-const ChartTooltip = ({ active, payload, label }) => {
-  if (!active||!payload?.length) return null;
-  return (
-    <div style={{background:"#1e293b",borderRadius:8,padding:"8px 12px",fontSize:12,color:"#f1f5f9",border:"1px solid #334155"}}>
-      <div style={{fontWeight:700,marginBottom:4}}>{label}</div>
-      {payload.map(p=>(
-        <div key={p.name} style={{color:p.name==="baseline"?"#60a5fa":"#f87171",marginBottom:2}}>
-          {p.name}: {Number(p.value).toFixed(2)}M
-        </div>
-      ))}
-    </div>
-  );
-};
+const InvTooltip = ({active,payload,label})=>active&&payload?.length?(
+  <div style={{background:"#1e293b",borderRadius:7,padding:"6px 10px",fontSize:11,color:"#f1f5f9",border:"1px solid #334155"}}>
+    <b>{label}</b>
+    {payload.map(p=><div key={p.name} style={{color:p.name==="onHand"?"#60a5fa":"#f87171"}}>{p.name==="onHand"?"On Hand":"Safety"}: {p.value}%</div>)}
+  </div>
+):null;
+
+const CostTooltip = ({active,payload,label})=>active&&payload?.length?(
+  <div style={{background:"#1e293b",borderRadius:7,padding:"6px 10px",fontSize:11,color:"#f1f5f9",border:"1px solid #334155"}}>
+    <b>{label}</b>
+    {payload.map(p=><div key={p.name} style={{color:p.name==="baseline"?"#60a5fa":"#f87171"}}>{p.name}: ${Number(p.value).toFixed(2)}M</div>)}
+  </div>
+):null;
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
 export default function App() {
@@ -410,307 +408,276 @@ export default function App() {
   const [mitigations, setMitigations] = useState({backup_supplier:false,air_freight:false,safety_stock:false,reroute_dc:false});
   const [selectedNode, setSelectedNode] = useState(null);
   const [mapTab, setMapTab] = useState("network");
-  const [chartTab, setChartTab] = useState("inventory");
 
   const sim = computeSimulation(activeScenario, severity, mitigations);
 
-  // Load Leaflet CSS + JS
-  useEffect(() => {
-    if (window.L) { setLeafletLoaded(true); return; }
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+  useEffect(()=>{
+    if (window.L){setLeafletLoaded(true);return;}
+    const link=document.createElement("link");
+    link.rel="stylesheet"; link.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
     document.head.appendChild(link);
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-    script.onload = () => setLeafletLoaded(true);
+    const script=document.createElement("script");
+    script.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    script.onload=()=>setLeafletLoaded(true);
     document.head.appendChild(script);
-  }, []);
+  },[]);
 
-  const toggleMitigation = useCallback((key) => {
-    setMitigations(prev => ({...prev,[key]:!prev[key]}));
-  }, []);
+  const toggleMitigation = useCallback((key)=>{
+    setMitigations(prev=>({...prev,[key]:!prev[key]}));
+  },[]);
 
-  const handleScenarioSelect = (id) => {
-    setActiveScenario(prev => prev===id?null:id);
+  const handleScenarioSelect = (id)=>{
+    setActiveScenario(prev=>prev===id?null:id);
     setMitigations({backup_supplier:false,air_freight:false,safety_stock:false,reroute_dc:false});
     setSelectedNode(null);
   };
 
-  const kpis = [
-    { label:"Lead Time Delta", value:`+${sim.leadTimeDelta}d`, sub:"vs. baseline", color:sim.leadTimeDelta>20?"#ef4444":sim.leadTimeDelta>8?"#f59e0b":"#22c55e" },
-    { label:"Cost Impact",     value:activeScenario?`+$${sim.costImpact}M`:"$0",  sub:"weekly premium", color:sim.costImpact>6?"#ef4444":sim.costImpact>2?"#f59e0b":"#22c55e" },
-    { label:"Fill Rate",       value:`${sim.fillRate}%`, sub:"order fulfillment",  color:sim.fillRate<65?"#ef4444":sim.fillRate<80?"#f59e0b":"#22c55e" },
-    { label:"Capacity Loss",   value:`${sim.capacityLoss}%`, sub:"affected plants",color:sim.capacityLoss>40?"#ef4444":sim.capacityLoss>20?"#f59e0b":"#22c55e" },
-  ];
+  const scenarioDef = activeScenario?SCENARIOS[activeScenario]:null;
+  const nodeInfo    = selectedNode?NODE_INFO[selectedNode.id]:null;
+  const nodeAffected= selectedNode&&sim.affectedNodes.includes(selectedNode.id);
+  const nodeDOI     = nodeInfo?(nodeAffected?Math.round(nodeInfo.doi*(1-sim.capacityLoss/100)*0.6):nodeInfo.doi):null;
 
-  const scenarioDef = activeScenario ? SCENARIOS[activeScenario] : null;
-  const nodeInfo = selectedNode ? NODE_INFO[selectedNode.id] : null;
-  const nodeAffected = selectedNode && sim.affectedNodes.includes(selectedNode.id);
-  const nodeDOI = nodeInfo ? (nodeAffected ? Math.round(nodeInfo.doi*(1-sim.capacityLoss/100)*0.6) : nodeInfo.doi) : null;
+  const kpis = [
+    { label:"Network Resilience", value:`${sim.resilienceScore}`, sub:"/ 100 score",    color:sim.resilienceScore>=70?"#22c55e":sim.resilienceScore>=45?"#f59e0b":"#ef4444", gauge:true },
+    { label:"Lead Time Delta",    value:`+${sim.leadTimeDelta}d`, sub:"vs. baseline",   color:sim.leadTimeDelta>20?"#ef4444":sim.leadTimeDelta>8?"#f59e0b":"#22c55e" },
+    { label:"Cost Impact",        value:activeScenario?`+$${sim.costImpact}M`:"$0",     sub:"weekly premium", color:sim.costImpact>6?"#ef4444":sim.costImpact>2?"#f59e0b":"#22c55e" },
+    { label:"Fill Rate",          value:`${sim.fillRate}%`,       sub:"order fulfillment",color:sim.fillRate<65?"#ef4444":sim.fillRate<80?"#f59e0b":"#22c55e" },
+    { label:"Capacity Loss",      value:`${sim.capacityLoss}%`,   sub:"affected plants", color:sim.capacityLoss>40?"#ef4444":sim.capacityLoss>20?"#f59e0b":"#22c55e" },
+  ];
 
   return (
     <div style={{fontFamily:"'IBM Plex Sans','Segoe UI',sans-serif",background:"#050d1a",minHeight:"100vh",color:"#f1f5f9",display:"flex",flexDirection:"column"}}>
 
       {/* HEADER */}
-      <div style={{borderBottom:"1px solid #0f2233",padding:"14px 28px",display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0}}>
-        <div style={{display:"flex",alignItems:"center",gap:14}}>
-          <img src={LOGO} alt="Alpine Business Analytics" style={{height:40,width:40,borderRadius:8,objectFit:"cover"}}/>
+      <div style={{borderBottom:"1px solid #0f2233",padding:"13px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0}}>
+        <div style={{display:"flex",alignItems:"center",gap:12}}>
+          <img src={LOGO} alt="Alpine" style={{height:38,width:38,borderRadius:7,objectFit:"cover"}}/>
           <div>
-            <div style={{fontSize:15,fontWeight:700,letterSpacing:"-0.02em"}}>Meridian Industrial — Supply Chain Disruption Simulator</div>
-            <div style={{fontSize:11,color:"#334155",letterSpacing:"0.05em"}}>ALPINE BUSINESS ANALYTICS · OPERATIONS &amp; SUPPLY CHAIN INTELLIGENCE</div>
+            <div style={{fontSize:14,fontWeight:700,letterSpacing:"-0.02em",color:"#f1f5f9"}}>Meridian Industrial — Supply Chain Disruption Simulator</div>
+            <div style={{fontSize:10,color:"#64748b",letterSpacing:"0.05em"}}>ALPINE BUSINESS ANALYTICS · OPERATIONS &amp; SUPPLY CHAIN INTELLIGENCE</div>
           </div>
         </div>
-        <div style={{display:"flex",alignItems:"center",gap:8}}>
-          <span style={{fontSize:11,color:"#475569",marginRight:4}}>Severity:</span>
+        <div style={{display:"flex",alignItems:"center",gap:7}}>
+          <span style={{fontSize:11,color:"#94a3b8",marginRight:2}}>Severity:</span>
           {["mild","moderate","severe"].map(s=>(
             <button key={s} onClick={()=>setSeverity(s)} style={{
-              padding:"5px 12px",borderRadius:6,border:"1px solid",cursor:"pointer",fontSize:11,fontWeight:600,textTransform:"capitalize",letterSpacing:"0.04em",
+              padding:"5px 12px",borderRadius:6,border:"1px solid",cursor:"pointer",
+              fontSize:11,fontWeight:600,textTransform:"capitalize",letterSpacing:"0.04em",
               borderColor:severity===s?(s==="mild"?"#22c55e":s==="moderate"?"#f59e0b":"#ef4444"):"#1e293b",
               background:severity===s?(s==="mild"?"#052e16":s==="moderate"?"#431407":"#450a0a"):"transparent",
-              color:severity===s?"#fff":"#475569",
+              color:severity===s?"#f1f5f9":"#64748b",
             }}>{s}</button>
           ))}
         </div>
       </div>
 
       {/* CONTEXT BANNER */}
-      <div style={{background:"#0a1628",borderBottom:"1px solid #0f2233",padding:"10px 28px",display:"flex",gap:32,alignItems:"flex-start"}}>
-        <div style={{flex:1}}>
-          <span style={{fontSize:11,fontWeight:700,color:"#3b82f6",letterSpacing:"0.08em"}}>ABOUT THIS SIMULATOR · </span>
-          <span style={{fontSize:11,color:"#475569",lineHeight:1.6}}>
-            Meridian Industrial manufactures hydraulic presses, conveyor systems, and industrial pumps across 3 global plants. This simulator models how disruptions cascade through the supply network — from Tier-2 raw material suppliers through Tier-1 component makers to final distribution. Select a disruption scenario on the left, adjust severity in the header, then apply mitigation levers to see real-time impact on cost, lead time, fill rate, and network resilience.
-          </span>
-        </div>
-        <div style={{fontSize:11,color:"#334155",whiteSpace:"nowrap",paddingTop:2}}>
-          <span style={{color:"#22c55e",fontWeight:700}}>→ Start:</span> Pick a scenario · Set severity · Apply mitigations
-        </div>
+      <div style={{background:"#071120",borderBottom:"1px solid #0f2233",padding:"8px 24px",display:"flex",gap:24,alignItems:"center"}}>
+        <span style={{fontSize:10,fontWeight:700,color:"#3b82f6",letterSpacing:"0.08em",whiteSpace:"nowrap"}}>ABOUT THIS SIMULATOR</span>
+        <span style={{fontSize:11,color:"#94a3b8",lineHeight:1.6}}>
+          Meridian Industrial manufactures hydraulic presses, conveyor systems, and industrial pumps across 3 global plants. Select a disruption scenario on the left, adjust severity above, then toggle mitigation levers on the right to see real-time impact on cost, lead time, fill rate, and network resilience.
+        </span>
+        <span style={{fontSize:11,color:"#22c55e",whiteSpace:"nowrap",fontWeight:600}}>← Start here</span>
       </div>
 
-      <div style={{display:"grid",gridTemplateColumns:"240px 1fr 280px",flex:1,minHeight:0}}>
+      <div style={{display:"grid",gridTemplateColumns:"230px 1fr 290px",flex:1,minHeight:0,overflow:"hidden"}}>
 
-        {/* LEFT — Scenarios + Mitigations */}
-        <div style={{borderRight:"1px solid #0f2233",padding:"16px 12px",overflowY:"auto",display:"flex",flexDirection:"column",gap:6}}>
-          <div style={{fontSize:9,fontWeight:700,color:"#334155",letterSpacing:"0.12em",marginBottom:4}}>DISRUPTION SCENARIOS</div>
-          <div style={{fontSize:10,color:"#1e3a5f",marginBottom:8}}>Click a scenario to activate it. Only one scenario runs at a time.</div>
+        {/* LEFT — Scenarios + About */}
+        <div style={{borderRight:"1px solid #0f2233",overflowY:"auto",display:"flex",flexDirection:"column"}}>
 
-          {Object.values(SCENARIOS).map(s=>{
-            const active=activeScenario===s.id;
-            return (
-              <div key={s.id} onClick={()=>handleScenarioSelect(s.id)} style={{
-                borderRadius:10,padding:"10px 12px",cursor:"pointer",
-                border:`1px solid ${active?"#3b82f6":"#0f2233"}`,
-                background:active?"#0d1f38":"transparent",
-                transition:"all 0.2s",
-              }}>
-                <div style={{display:"flex",alignItems:"center",gap:7,marginBottom:active?4:0}}>
-                  <span style={{fontSize:14}}>{s.icon}</span>
-                  <span style={{fontSize:12,fontWeight:600,color:active?"#93c5fd":"#94a3b8"}}>{s.label}</span>
-                </div>
-                {active&&<p style={{fontSize:10,color:"#475569",lineHeight:1.5,margin:0}}>{s.description}</p>}
-              </div>
-            );
-          })}
-
-          {activeScenario&&(
-            <>
-              <div style={{fontSize:9,fontWeight:700,color:"#334155",letterSpacing:"0.12em",marginTop:12,marginBottom:4}}>MITIGATION LEVERS</div>
-              <div style={{fontSize:10,color:"#1e3a5f",marginBottom:8}}>Toggle one or more responses. Each adjusts cost, lead time, and resilience tradeoffs.</div>
-              {MITIGATIONS.map(m=>(
-                <div key={m.key} onClick={()=>toggleMitigation(m.key)} style={{
-                  borderRadius:10,padding:"9px 11px",cursor:"pointer",
-                  border:`1px solid ${mitigations[m.key]?"#22c55e":"#0f2233"}`,
-                  background:mitigations[m.key]?"#052e16":"transparent",
-                  transition:"all 0.2s",
-                }}>
-                  <div style={{display:"flex",alignItems:"center",gap:7}}>
-                    <span style={{fontSize:13}}>{m.icon}</span>
-                    <div style={{flex:1}}>
-                      <div style={{fontSize:11,fontWeight:600,color:mitigations[m.key]?"#86efac":"#64748b"}}>{m.label}</div>
-                      <div style={{fontSize:9,color:"#334155",marginTop:1}}>{m.detail}</div>
+          {/* Scenarios */}
+          <div style={{padding:"14px 12px",borderBottom:"1px solid #0f2233"}}>
+            <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.12em",marginBottom:4}}>DISRUPTION SCENARIOS</div>
+            <div style={{fontSize:10,color:"#64748b",marginBottom:10}}>Click to activate. One scenario at a time.</div>
+            <div style={{display:"flex",flexDirection:"column",gap:5}}>
+              {Object.values(SCENARIOS).map(s=>{
+                const active=activeScenario===s.id;
+                return (
+                  <div key={s.id} onClick={()=>handleScenarioSelect(s.id)} style={{
+                    borderRadius:9,padding:"9px 11px",cursor:"pointer",
+                    border:`1px solid ${active?"#3b82f6":"#0f2233"}`,
+                    background:active?"#0d1f38":"transparent",
+                    transition:"all 0.2s",
+                  }}>
+                    <div style={{display:"flex",alignItems:"center",gap:7,marginBottom:active?4:0}}>
+                      <span style={{fontSize:13}}>{s.icon}</span>
+                      <span style={{fontSize:12,fontWeight:600,color:active?"#93c5fd":"#cbd5e1"}}>{s.label}</span>
                     </div>
-                    <div style={{width:14,height:14,borderRadius:"50%",border:`2px solid ${mitigations[m.key]?"#22c55e":"#1e293b"}`,background:mitigations[m.key]?"#22c55e":"transparent",flexShrink:0}}/>
+                    {active&&<p style={{fontSize:10,color:"#94a3b8",lineHeight:1.5,margin:0}}>{s.description}</p>}
                   </div>
-                </div>
-              ))}
-            </>
-          )}
+                );
+              })}
+            </div>
+          </div>
+
+          {/* About */}
+          <div style={{padding:"14px 12px",flex:1}}>
+            <div style={{display:"flex",gap:11,alignItems:"flex-start",marginBottom:12}}>
+              <img src={HEADSHOT} alt="Matthew Agnello" style={{width:54,height:54,borderRadius:"50%",objectFit:"cover",flexShrink:0,border:"2px solid #1e293b"}}/>
+              <div>
+                <div style={{fontSize:13,fontWeight:700,color:"#f1f5f9",lineHeight:1.3}}>Matthew Agnello</div>
+                <div style={{fontSize:11,color:"#cbd5e1",marginTop:1}}>Alpine Business Analytics</div>
+                <div style={{fontSize:10,color:"#94a3b8",marginTop:1,marginBottom:8}}>Principal Consultant</div>
+                <a href="https://www.linkedin.com/in/agnello/" target="_blank" rel="noopener noreferrer"
+                  style={{display:"inline-flex",alignItems:"center",gap:5,fontSize:10,color:"#60a5fa",textDecoration:"none",border:"1px solid #1e293b",borderRadius:5,padding:"3px 8px",background:"#0d1f38"}}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#60a5fa"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
+                  linkedin.com/in/agnello
+                </a>
+              </div>
+            </div>
+            <p style={{fontSize:10,color:"#94a3b8",lineHeight:1.7,margin:0}}>
+              Matthew Agnello is an operations and data analytics leader with more than a decade of experience building, scaling, and optimizing complex supply-chain and operating models across aerospace, automotive, technology, and industrial environments. His work spans procurement, inventory, logistics, production, and enterprise data strategy leveraging analytics to improve performance, resilience, and capital efficiency. Matthew holds an MBA from Cornell University and a B.S. in Supply Chain Management from Syracuse University. He is APICS CPIM certified and a Level II CFA candidate. He brings a distinctive ability to integrate operational execution with analytics-driven strategy to enable sustainable, data-informed growth.
+            </p>
+          </div>
         </div>
 
-        {/* CENTER — KPIs + Map */}
-        <div style={{padding:"16px 20px",overflowY:"auto",display:"flex",flexDirection:"column",gap:14,minWidth:0}}>
+        {/* CENTER — KPIs + Map + Node detail */}
+        <div style={{padding:"14px 18px",overflowY:"auto",display:"flex",flexDirection:"column",gap:12,minWidth:0}}>
 
-          {/* KPI row */}
-          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10}}>
+          {/* KPI row — 5 cards */}
+          <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8}}>
             {kpis.map(kpi=>(
-              <div key={kpi.label} style={{borderRadius:10,padding:"12px 14px",background:"#0a1628",border:"1px solid #0f2233"}}>
-                <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.1em",marginBottom:5}}>{kpi.label.toUpperCase()}</div>
-                <div style={{fontSize:22,fontWeight:700,color:kpi.color,transition:"color 0.4s"}}>{kpi.value}</div>
-                <div style={{fontSize:10,color:"#1e3a5f",marginTop:2}}>{kpi.sub}</div>
+              <div key={kpi.label} style={{borderRadius:9,padding:"10px 12px",background:"#071120",border:"1px solid #0f2233"}}>
+                <div style={{fontSize:8,color:"#64748b",fontWeight:700,letterSpacing:"0.1em",marginBottom:4}}>{kpi.label.toUpperCase()}</div>
+                <div style={{fontSize:20,fontWeight:700,color:kpi.color,transition:"color 0.4s"}}>{kpi.value}</div>
+                <div style={{fontSize:9,color:"#64748b",marginTop:2}}>{kpi.sub}</div>
               </div>
             ))}
           </div>
 
-          {/* Map tab toggle */}
-          <div style={{display:"flex",gap:4}}>
+          {/* Mitigation levers — horizontal, pops in when scenario active */}
+          {activeScenario&&(
+            <div style={{background:"#071a2e",borderRadius:10,border:"1px solid #0f2233",padding:"10px 12px"}}>
+              <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.1em",marginBottom:8}}>MITIGATION LEVERS — toggle responses to model tradeoffs</div>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}}>
+                {MITIGATIONS.map(m=>(
+                  <div key={m.key} onClick={()=>toggleMitigation(m.key)} style={{
+                    borderRadius:8,padding:"8px 10px",cursor:"pointer",
+                    border:`1px solid ${mitigations[m.key]?"#22c55e":"#132238"}`,
+                    background:mitigations[m.key]?"#052e16":"#0a1e35",
+                    transition:"all 0.2s",
+                  }}>
+                    <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:4}}>
+                      <span style={{fontSize:14}}>{m.icon}</span>
+                      <div style={{width:12,height:12,borderRadius:"50%",border:`2px solid ${mitigations[m.key]?"#22c55e":"#1e3a5f"}`,background:mitigations[m.key]?"#22c55e":"transparent",flexShrink:0,marginLeft:"auto"}}/>
+                    </div>
+                    <div style={{fontSize:11,fontWeight:600,color:mitigations[m.key]?"#86efac":"#cbd5e1",lineHeight:1.3,marginBottom:3}}>{m.label}</div>
+                    <div style={{fontSize:9,color:"#64748b"}}>{m.detail}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Map tabs */}
+          <div style={{display:"flex",gap:4,alignItems:"center"}}>
             {["network","geo"].map(t=>(
               <button key={t} onClick={()=>setMapTab(t)} style={{
-                padding:"5px 14px",borderRadius:6,border:"1px solid",cursor:"pointer",fontSize:11,fontWeight:600,
+                padding:"4px 13px",borderRadius:6,border:"1px solid",cursor:"pointer",fontSize:11,fontWeight:600,
                 borderColor:mapTab===t?"#3b82f6":"#0f2233",
                 background:mapTab===t?"#0d1f38":"transparent",
-                color:mapTab===t?"#93c5fd":"#475569",
+                color:mapTab===t?"#93c5fd":"#64748b",
               }}>{t==="network"?"Network Map":"Geographic Map"}</button>
             ))}
-            <span style={{fontSize:10,color:"#1e3a5f",alignSelf:"center",marginLeft:8}}>Click any node for details</span>
+            <span style={{fontSize:10,color:"#334155",marginLeft:6}}>Click any node for details</span>
           </div>
 
           {/* Map */}
-          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",height:520,flexShrink:0}}>
+          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0}}>
             {mapTab==="network"
-              ? <NetworkMap affectedNodes={sim.affectedNodes} capacityLoss={sim.capacityLoss} onNodeClick={setSelectedNode} selectedNode={selectedNode}/>
-              : leafletLoaded
-                ? <GeoMap affectedNodes={sim.affectedNodes} onNodeClick={setSelectedNode} selectedNode={selectedNode}/>
-                : <div style={{height:"100%",display:"flex",alignItems:"center",justifyContent:"center",color:"#334155",fontSize:13}}>Loading map…</div>
+              ?<NetworkMap affectedNodes={sim.affectedNodes} capacityLoss={sim.capacityLoss} onNodeClick={setSelectedNode} selectedNode={selectedNode}/>
+              :leafletLoaded
+                ?<GeoMap affectedNodes={sim.affectedNodes} onNodeClick={setSelectedNode}/>
+                :<div style={{height:"100%",display:"flex",alignItems:"center",justifyContent:"center",color:"#334155",fontSize:12}}>Loading map…</div>
             }
           </div>
 
-          {/* Node detail panel */}
+          {/* Node detail */}
           {selectedNode&&nodeInfo&&(
-            <div style={{background:"#0a1628",borderRadius:10,padding:"14px 16px",border:`1px solid ${nodeAffected?"#7f1d1d":"#0f2233"}`,display:"flex",gap:16,alignItems:"flex-start"}}>
+            <div style={{background:"#071120",borderRadius:10,padding:"13px 15px",border:`1px solid ${nodeAffected?"#7f1d1d":"#0f2233"}`,display:"flex",gap:14,alignItems:"flex-start"}}>
               <div style={{flex:1}}>
-                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
-                  <span style={{fontSize:13,fontWeight:700,color:nodeAffected?"#f87171":"#93c5fd"}}>{selectedNode.label}</span>
-                  <span style={{fontSize:11,color:"#334155"}}>{selectedNode.sub}</span>
+                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:5}}>
+                  <span style={{fontSize:13,fontWeight:700,color:nodeAffected?"#fca5a5":"#93c5fd"}}>{selectedNode.label}</span>
+                  <span style={{fontSize:11,color:"#64748b"}}>{selectedNode.sub}</span>
                   {nodeAffected&&<span style={{fontSize:10,color:"#ef4444",fontWeight:700,background:"#450a0a",padding:"2px 7px",borderRadius:4}}>⚠ DISRUPTED</span>}
                 </div>
-                <p style={{fontSize:11,color:"#64748b",lineHeight:1.6,margin:"0 0 6px"}}>{nodeInfo.desc}</p>
-                <div style={{fontSize:10,color:"#334155"}}>
-                  <span style={{color:"#475569",fontWeight:600}}>Delivers: </span>{nodeInfo.delivers}
-                </div>
+                <p style={{fontSize:11,color:"#94a3b8",lineHeight:1.6,margin:"0 0 5px"}}>{nodeInfo.desc}</p>
+                <div style={{fontSize:10,color:"#64748b"}}><span style={{color:"#94a3b8",fontWeight:600}}>Delivers: </span>{nodeInfo.delivers}</div>
                 {nodeAffected&&scenarioDef&&(
-                  <div style={{marginTop:8,padding:"7px 10px",background:"#450a0a",borderRadius:7,fontSize:10,color:"#fca5a5",lineHeight:1.6}}>
-                    <span style={{fontWeight:700}}>Impact: </span>{scenarioDef.description} This node is contributing to +{sim.leadTimeDelta} days lead time and a ${sim.costImpact}M weekly cost premium.
+                  <div style={{marginTop:7,padding:"7px 10px",background:"#450a0a",borderRadius:7,fontSize:10,color:"#fca5a5",lineHeight:1.6}}>
+                    <span style={{fontWeight:700}}>Impact: </span>{scenarioDef.description} Contributing to +{sim.leadTimeDelta}d lead time and +${sim.costImpact}M/week cost premium.
                   </div>
                 )}
               </div>
-              <div style={{flexShrink:0,textAlign:"center",background:"#0f2233",borderRadius:8,padding:"10px 14px",minWidth:80}}>
-                <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.08em",marginBottom:4}}>DAYS ON HAND</div>
+              <div style={{flexShrink:0,textAlign:"center",background:"#0f2233",borderRadius:8,padding:"9px 13px",minWidth:76}}>
+                <div style={{fontSize:8,color:"#64748b",fontWeight:700,letterSpacing:"0.08em",marginBottom:3}}>DAYS ON HAND</div>
                 <div style={{fontSize:26,fontWeight:700,color:nodeDOI<10?"#ef4444":nodeDOI<20?"#f59e0b":"#22c55e"}}>{nodeDOI}</div>
-                <div style={{fontSize:9,color:"#1e3a5f",marginTop:2}}>inventory</div>
+                <div style={{fontSize:9,color:"#475569",marginTop:1}}>inventory</div>
               </div>
-              <button onClick={()=>setSelectedNode(null)} style={{background:"none",border:"none",color:"#334155",cursor:"pointer",fontSize:18,alignSelf:"flex-start"}}>×</button>
+              <button onClick={()=>setSelectedNode(null)} style={{background:"none",border:"none",color:"#475569",cursor:"pointer",fontSize:18,alignSelf:"flex-start"}}>×</button>
             </div>
           )}
         </div>
 
-        {/* RIGHT — Resilience + Charts + About */}
-        <div style={{borderLeft:"1px solid #0f2233",padding:"16px 14px",overflowY:"auto",display:"flex",flexDirection:"column",gap:14}}>
+        {/* RIGHT — Impact Summary + Charts + Mitigations */}
+        <div style={{borderLeft:"1px solid #0f2233",overflowY:"auto",display:"flex",flexDirection:"column",gap:0}}>
 
-          {/* Resilience */}
-          <div style={{background:"#0a1628",borderRadius:10,padding:"12px 14px",border:"1px solid #0f2233",display:"flex",alignItems:"center",gap:12}}>
-            <ResilienceGauge score={sim.resilienceScore}/>
-            <div>
-              <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.1em",marginBottom:5}}>NETWORK RESILIENCE</div>
-              <div style={{fontSize:11,color:"#64748b",lineHeight:1.6}}>
-                {sim.resilienceScore>=70?"Operating within acceptable risk tolerance.":sim.resilienceScore>=45?"Moderate stress. Mitigation recommended.":"Critical disruption. Immediate action required."}
-              </div>
-            </div>
-          </div>
-
-          {/* Chart tabs */}
-          <div style={{display:"flex",gap:4}}>
-            {["inventory","cost"].map(t=>(
-              <button key={t} onClick={()=>setChartTab(t)} style={{
-                padding:"4px 11px",borderRadius:6,border:"1px solid",cursor:"pointer",fontSize:11,fontWeight:600,
-                borderColor:chartTab===t?"#3b82f6":"#0f2233",
-                background:chartTab===t?"#0d1f38":"transparent",
-                color:chartTab===t?"#93c5fd":"#475569",
-              }}>{t==="inventory"?"Inventory":"Weekly Cost"}</button>
-            ))}
-          </div>
-
-          {chartTab==="inventory"?(
-            <div>
-              <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.1em",marginBottom:8}}>INVENTORY BURN-DOWN (12 WEEKS)</div>
-              <div style={{fontSize:9,color:"#1e3a5f",marginBottom:8}}>Blue area = stock on hand. Red dashes = safety stock threshold (30%). If on-hand drops below, customer service is at risk.</div>
-              <ResponsiveContainer width="100%" height={180}>
-                <AreaChart data={sim.inventoryData} margin={{top:4,right:4,left:-24,bottom:0}}>
-                  <defs>
-                    <linearGradient id="invG" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.35}/>
-                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#0f2233"/>
-                  <XAxis dataKey="week" tick={{fontSize:9,fill:"#334155"}}/>
-                  <YAxis tick={{fontSize:9,fill:"#334155"}} domain={[0,110]}/>
-                  <Tooltip content={({active,payload,label})=>active&&payload?.length?<div style={{background:"#1e293b",borderRadius:7,padding:"6px 10px",fontSize:11,color:"#f1f5f9",border:"1px solid #334155"}}><b>{label}</b>{payload.map(p=><div key={p.name} style={{color:p.name==="onHand"?"#60a5fa":"#f87171"}}>{p.name==="onHand"?"On Hand":"Safety"}: {p.value}%</div>)}</div>:null}/>
-                  <Area type="monotone" dataKey="onHand" name="onHand" stroke="#3b82f6" fill="url(#invG)" strokeWidth={2} dot={false}/>
-                  <Area type="monotone" dataKey="safety" name="safety" stroke="#ef4444" fill="none" strokeDasharray="4 4" strokeWidth={1.5} dot={false}/>
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          ):(
-            <div>
-              <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.1em",marginBottom:8}}>WEEKLY COST vs BASELINE ($M)</div>
-              <div style={{fontSize:9,color:"#1e3a5f",marginBottom:8}}>Blue = baseline weekly ops cost ($2.4M). Red = actual cost including expedite fees, premium freight, and overtime.</div>
-              <ResponsiveContainer width="100%" height={180}>
-                <BarChart data={sim.costData} margin={{top:4,right:4,left:-24,bottom:0}}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#0f2233"/>
-                  <XAxis dataKey="week" tick={{fontSize:9,fill:"#334155"}}/>
-                  <YAxis tick={{fontSize:9,fill:"#334155"}}/>
-                  <Tooltip content={<ChartTooltip/>}/>
-                  <Bar dataKey="baseline" name="baseline" fill="#1e40af" radius={[2,2,0,0]}/>
-                  <Bar dataKey="actual"   name="actual"   fill="#ef4444" radius={[2,2,0,0]}/>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          )}
-
-          {/* Impact summary */}
-          {activeScenario&&(
-            <div style={{background:"#0a1628",borderRadius:10,padding:"12px 14px",border:"1px solid #0f2233"}}>
-              <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.1em",marginBottom:8}}>IMPACT SUMMARY</div>
-              {[
-                {label:"Nodes disrupted",      value:sim.affectedNodes.length},
-                {label:"Lead time added",       value:`${sim.leadTimeDelta} days`},
-                {label:"Fill rate drop",        value:`${98-sim.fillRate}pp`},
-                {label:"Weekly cost premium",   value:`$${sim.costImpact}M`},
+          {/* Impact Summary */}
+          <div style={{padding:"14px 14px",borderBottom:"1px solid #0f2233"}}>
+            <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.1em",marginBottom:10}}>IMPACT SUMMARY</div>
+            {activeScenario?(
+              [
+                {label:"Nodes disrupted",    value:sim.affectedNodes.length},
+                {label:"Lead time added",    value:`${sim.leadTimeDelta} days`},
+                {label:"Fill rate drop",     value:`${98-sim.fillRate}pp`},
+                {label:"Weekly cost premium",value:`$${sim.costImpact}M`},
               ].map(row=>(
-                <div key={row.label} style={{display:"flex",justifyContent:"space-between",fontSize:11,padding:"4px 0",borderBottom:"1px solid #050d1a"}}>
-                  <span style={{color:"#475569"}}>{row.label}</span>
+                <div key={row.label} style={{display:"flex",justifyContent:"space-between",fontSize:11,padding:"5px 0",borderBottom:"1px solid #071120"}}>
+                  <span style={{color:"#94a3b8"}}>{row.label}</span>
                   <span style={{fontWeight:700,color:"#f1f5f9"}}>{row.value}</span>
                 </div>
-              ))}
-            </div>
-          )}
+              ))
+            ):(
+              <div style={{fontSize:11,color:"#334155",textAlign:"center",padding:"8px 0"}}>No scenario active</div>
+            )}
+          </div>
 
-          {!activeScenario&&(
-            <div style={{background:"#0a1628",borderRadius:10,padding:"16px",border:"1px dashed #0f2233",textAlign:"center",color:"#1e3a5f",fontSize:11,lineHeight:1.7}}>
-              Select a disruption scenario from the left panel to begin the simulation.
-            </div>
-          )}
+          {/* Inventory chart — always visible */}
+          <div style={{padding:"12px 14px",borderBottom:"1px solid #0f2233"}}>
+            <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.1em",marginBottom:4}}>INVENTORY BURN-DOWN (12 WEEKS)</div>
+            <div style={{fontSize:9,color:"#64748b",marginBottom:8}}>Blue = on hand. Red dashes = safety stock floor (30%).</div>
+            <ResponsiveContainer width="100%" height={150}>
+              <AreaChart data={sim.inventoryData} margin={{top:4,right:4,left:-26,bottom:0}}>
+                <defs>
+                  <linearGradient id="invG" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%"  stopColor="#3b82f6" stopOpacity={0.35}/>
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#0f2233"/>
+                <XAxis dataKey="week" tick={{fontSize:9,fill:"#64748b"}}/>
+                <YAxis tick={{fontSize:9,fill:"#64748b"}} domain={[0,110]}/>
+                <Tooltip content={<InvTooltip/>}/>
+                <Area type="monotone" dataKey="onHand" name="onHand" stroke="#3b82f6" fill="url(#invG)" strokeWidth={2} dot={false}/>
+                <Area type="monotone" dataKey="safety" name="safety" stroke="#ef4444" fill="none" strokeDasharray="4 4" strokeWidth={1.5} dot={false}/>
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
 
-          {/* ABOUT */}
-          <div style={{background:"#0a1628",borderRadius:10,border:"1px solid #0f2233",overflow:"hidden",marginTop:4}}>
-            <div style={{padding:"14px 14px"}}>
-              <div style={{fontSize:9,color:"#334155",fontWeight:700,letterSpacing:"0.1em",marginBottom:12}}>ABOUT THE ANALYST</div>
-              <div style={{display:"flex",gap:12,alignItems:"flex-start",marginBottom:12}}>
-                <img src={HEADSHOT} alt="Matthew Agnello" style={{width:56,height:56,borderRadius:"50%",objectFit:"cover",flexShrink:0,border:"2px solid #0f2233"}}/>
-                <div>
-                  <div style={{fontSize:13,fontWeight:700,color:"#e2e8f0",marginBottom:2}}>Matthew Agnello</div>
-                  <div style={{fontSize:11,color:"#94a3b8",marginBottom:8}}>Principal Consultant, Alpine Business Analytics</div>
-                  <a href="https://www.linkedin.com/in/agnello/" target="_blank" rel="noopener noreferrer"
-                    style={{display:"inline-flex",alignItems:"center",gap:5,fontSize:10,color:"#60a5fa",textDecoration:"none",border:"1px solid #0f2233",borderRadius:5,padding:"3px 9px",background:"#0d1f38"}}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="#60a5fa"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
-                    linkedin.com/in/agnello
-                  </a>
-                </div>
-              </div>
-              <p style={{fontSize:11,color:"#475569",lineHeight:1.7,margin:0}}>
-                Matthew Agnello is an operations and data analytics leader with more than a decade of experience building, scaling, and optimizing complex supply-chain and operating models across aerospace, automotive, technology, and industrial environments. His work spans procurement, inventory, logistics, production, and enterprise data strategy leveraging analytics to improve performance, resilience, and capital efficiency. Matthew holds an MBA from Cornell University and a B.S. in Supply Chain Management from Syracuse University. He is APICS CPIM certified and a Level II CFA candidate. He brings a distinctive ability to integrate operational execution with analytics-driven strategy to enable sustainable, data-informed growth.
-              </p>
-            </div>
+          {/* Weekly cost chart — always visible */}
+          <div style={{padding:"12px 14px",borderBottom:"1px solid #0f2233"}}>
+            <div style={{fontSize:9,fontWeight:700,color:"#64748b",letterSpacing:"0.1em",marginBottom:4}}>WEEKLY COST vs BASELINE ($M)</div>
+            <div style={{fontSize:9,color:"#64748b",marginBottom:8}}>Blue = $2.4M baseline. Red = actual with disruption premium.</div>
+            <ResponsiveContainer width="100%" height={150}>
+              <BarChart data={sim.costData} margin={{top:4,right:4,left:-26,bottom:0}}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#0f2233"/>
+                <XAxis dataKey="week" tick={{fontSize:9,fill:"#64748b"}}/>
+                <YAxis tick={{fontSize:9,fill:"#64748b"}}/>
+                <Tooltip content={<CostTooltip/>}/>
+                <Bar dataKey="baseline" name="baseline" fill="#1e40af" radius={[2,2,0,0]}/>
+                <Bar dataKey="actual"   name="actual"   fill="#ef4444" radius={[2,2,0,0]}/>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
 
         </div>
