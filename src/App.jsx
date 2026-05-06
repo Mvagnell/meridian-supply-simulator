@@ -562,7 +562,7 @@ export default function App() {
           </div>
 
           {/* Map */}
-          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0,height:mapTab==="geo"?520:420}}>
+          <div style={{borderRadius:12,overflow:"hidden",border:"1px solid #0f2233",flexShrink:0,height:mapTab==="geo"?520:520}}>
             {mapTab==="network"
               ?<NetworkMap affectedNodes={sim.affectedNodes} capacityLoss={sim.capacityLoss} onNodeClick={setSelectedNode} selectedNode={selectedNode}/>
               :leafletLoaded
