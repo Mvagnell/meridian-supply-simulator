@@ -234,7 +234,7 @@ function NetworkMap({ affectedNodes, capacityLoss, onNodeClick, selectedNode }) 
     return Math.max(8,(100-capacityLoss)*(0.85+Math.sin(id.length)*0.15));
   };
   return (
-    <svg viewBox={`0 0 ${SVG_W} ${SVG_H}`} width="100%"
+    <svg viewBox={`0 0 ${SVG_W} ${SVG_H}`} width="100%" height="100%"
       style={{display:"block",borderRadius:12,background:"#0a1628"}}>
       <defs>
         <marker id="arr-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
